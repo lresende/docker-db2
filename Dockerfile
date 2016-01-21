@@ -20,6 +20,4 @@ MAINTAINER Luciano Resende <lresende@apache.org>
 
 RUN su - db2inst1 -c "db2start && /home/db2inst1/sqllib/bin/db2 CREATE DATABASE foo" 
 
-# && db2stop force
-
 ENTRYPOINT ["/entrypoint.sh"]
