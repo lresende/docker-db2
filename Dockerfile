@@ -18,6 +18,9 @@ FROM ibmcom/db2express-c:10.5.0.5-3.10.0
 
 MAINTAINER Luciano Resende <lresende@apache.org>
 
+RUN su - db2inst1 -c "db2start && db2set DB2COMM=TCPIP && db2 update dbm cfg using INSTANCE_MEMORY AUTOMATIC" \
+ && su - db2inst1 -c "db2stop force"
+
 RUN su - db2inst1 -c "db2start && /home/db2inst1/sqllib/bin/db2 CREATE DATABASE foo" 
 
 ENTRYPOINT ["/entrypoint.sh"]
