@@ -23,4 +23,6 @@ RUN su - db2inst1 -c "db2start && db2set DB2COMM=TCPIP && db2 update dbm cfg usi
 
 RUN su - db2inst1 -c "db2start && /home/db2inst1/sqllib/bin/db2 CREATE DATABASE foo" 
 
+RUN su - db2inst1 -c "db2start && /home/db2inst1/sqllib/bin/db2 CONNECT TO foo && /home/db2inst1/sqllib/bin/db2 -tvf /home/db2inst1/sqllib/misc/EXPLAIN.DDL"
+
 ENTRYPOINT ["/entrypoint.sh"]
